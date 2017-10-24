@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			使用template标签，在浏览器渲染时，会隐藏掉这个标签
+		-->
+		<div class="head">
+			<template v-for="(value, key, index) in innerText">
+				<h1>{{ innerTitle}}</h1>
+				<p>{{ index }} . {{ key }} : {{ value }}</p>
+			</template>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				var dataList = {
+					innerTitle : '插入',
+					innerText : /*[*/{
+						firstName : "LIU",
+						lastName : "CHANG",
+						age : 24
+					}/* ,{
+						firstName : "CCC",
+						lastName : "CHDDANG",
+						age : 3334
+					}]*/
+				};
+				new Vue({
+					el : ".head",
+					data : dataList
+				})
+			}
+		</script>
+	</body>
+</html>

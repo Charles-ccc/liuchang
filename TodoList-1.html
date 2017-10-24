@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户信息表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div class="container" id="box">
+        <form role="form">
+            <div class="form-group">
+                <label for="username">UserName：</label>
+                <input type="text" id="username" class="form-control" placeholder="Input Your Name" v-model="userName"/>
+            </div>
+            <div class="form-group">
+                <label for="age">Age：</label>
+                <input type="text" id="age" class="form-control" placeholder="Input Your Age" v-model="age"/>
+            </div>
+            <div class="form-group">
+                <input type="button" value="Add" class="btn btn-primary" v-on:click="add()">
+                <input type="reset" value="Reset" class="btn btn-danger">
+            </div>
+        </form>
+        <hr/>
+        <table class="table table-bordered table-hover">
+            <caption class="h3 text-center">User Information List</caption>
+            <tr>
+                <th class="text-center">Num</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Age</th>
+                <th class="text-center">Operate</th>
+            </tr>
+            <tr class="text-center" v-for="(myData,index) in myDatas" key="index">
+                <td>{{index+1}}</td>
+                <td>{{myData.name}}</td>
+                <td>{{myData.age}}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#layer" v-on:click="nowIndex=index">Delete</button>
+                </td>
+            </tr>
+            <tr v-show="myDatas.length!=0">
+                <td class="text-right" colspan="4">
+                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#layer" v-on:click="nowIndex=-1">Delete All</button>
+                </td>
+            </tr>
+            <tr v-show="myDatas.length==0">
+                <td class="text-center text-muted" colspan="4">
+                    <p>No Data……</p>
+                </td>
+            </tr>
+        </table>
+        
+        <!-- 模态弹出框 -->
+        <div role="dialog" class="modal fade" id="layer">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                        <h4 class="modal-title">确认删除？</h4>
+                    </div>
+                    <div class="modal-body text-right">
+                        <button class="btn btn-primary btn-sm" data-dismiss="modal" v-on:click="deleteMsg(nowIndex)">确认</button>
+                        <button class="btn btn-danger btn-sm" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    window.onload = function(){
+        new Vue({
+            el:'#box',
+            /* data:{
+                myDatas:[],
+                userName:'',
+                age:''
+            }, */
+            data() {
+                return  {
+                    myDatas:[],
+                    userName:'',
+                    age:'',
+                    nowIndex: -100
+                }
+                
+            },
+            methods: {
+                add : function(){
+                    this.myDatas.push({
+                        name:this.userName,
+                        age:this.age
+                    });
+                    this.userName="",
+                    this.age=""
+                },
+            deleteMsg : function(n){
+                    if(n==-1){
+                        this.myDatas=[];
+                    }else{ 
+                        this.myDatas.splice(n,1);
+                    }
+                }
+            }
+        })
+     }
+</script>
+</html>

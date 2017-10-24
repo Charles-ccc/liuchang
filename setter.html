@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">{{fullname}}</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		window.onload = function(){
+			var vm = new Vue({
+				el : "#demo",
+				data : {
+					firstName : 'Liu',
+					lastName : 'Chang'
+				},
+				computed : {
+					fullname : {
+						get: function(){
+							return this.firstName +' '+this.lastName;
+						},
+						set: function(newValue){
+							var names = newValue .split(" ")
+							this.firstName = names[0]
+							this.lastName = names[names.length-1]
+						}
+					}
+				}
+			});
+			setTimeout(function(){
+				vm.fullname = 'Kobe Bryant'
+			},3000);
+		}
+	</script>
+</html>

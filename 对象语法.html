@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#head{font-size: 26px;}
+		.red{color: red;}
+		.blue{color: blue;}
+	</style>
+	<body>
+		<div  id="head" v-bind:class="{'red' : isred , 'blue' : isblue}">{{innerHtml}}</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		window.onload = function(){
+			var dataList = {
+				innerHtml : '我要飞得更高',
+				isred : true,
+				isblue : false
+			};
+			new Vue({
+				el : "#head",
+				data : dataList
+			});
+			setTimeout(function(){
+				dataList.isred = false;
+				dataList.isblue = true;
+			},3000);
+		};
+	</script>
+</html>

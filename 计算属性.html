@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">{{fullname}}</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		window.onload = function(){
+			var vm = new Vue({
+				el : "#demo",
+				data : {
+					firstName : 'Liu',
+					lastName : 'Chang'
+				},
+				computed : {
+					fullname : function (){
+						return this.firstName +' '+this.lastName;
+					}
+				}
+			})
+		}
+	</script>
+</html>

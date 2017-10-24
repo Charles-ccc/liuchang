@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.red{color: red;font-size: 20px;}
+			.blue{color: blue;font-size: 30px;}
+		</style>
+	</head>
+	<body>
+		<!--
+			v-else 必须紧密的跟在 v-if 和 v-show 的后面
+		-->
+		<section>
+			<div v-if="display" class="red">{{ innerHtml}}</div>
+			<div v-else class="blue">{{innerHtml}}</div>
+		</section>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				var dataList = {
+					innerHtml : '我给你一个从未有过信仰的人的忠诚',
+					display : true
+				};
+				new Vue({
+						el : "section",
+						data : dataList
+				});
+				setTimeout(function(){
+					dataList.display = false;
+				},3000);
+			}
+		</script>
+	</body>
+</html>

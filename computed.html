@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <!-- computed的作用主要是对原数据进行改造输出，包括：格式的编辑，大小写转换，
+    顺序重排，添加符号…… -->
+    <div id="app">
+        <p>{{newPrice}}</p>
+        <ul>
+            <li v-for="item in reversNews">{{item.title}}-{{item.data}}</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    //倒序
+        var newsList=[
+            {title:'十九大顺利闭幕',data:'2017/10/24'},
+            {title:'ES6 模块的设计思想',data:'2017/10/25'},
+            {title:'编译时就能确定模块的依赖关系',data:'2017/10/26'},
+            {title:'尽量的静态化',data:'2017/10/27'},
+        ]
+        var app = new Vue({
+            el:"#app",
+            data:{
+                price:100,
+                newsList:newsList
+            },
+            computed:{
+                newPrice:function(){
+                    return this.price = '$' + this.price +'美元'
+                },
+                reversNews:function(){
+                    return this.newsList.reverse()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">{{count}}</div>
+    <p><button @click="add"></button></p>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{count},
+            methods:{
+                add:function(){
+                    this.count++;
+                }
+            },
+            beforeCreate:function(){
+                //初始化之前
+            },
+            creat:function(){
+                //创建完成
+            },
+            beforeMount:function(){
+                //挂载之前
+            },
+            mounted:function(){
+                //被挂载之后
+            },
+            updatad:function(){
+                //数据更新
+            },
+            actived:function(){
+                
+            },
+            beforeDestroy:function(){
+
+            },
+            destroy:function(){
+
+            },
+        })
+    </script>
+</body>
+
+</html>

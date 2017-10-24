@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="head">
+			<!--<p v-for="(text, index) in innerText">{{ innerTitle}} - {{ index }}:{{ text }}</p>-->
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				var vm = new Vue({
+					el : "div",
+					data : userProfile ={
+						name : "LIUCHANG"
+					}
+				});
+				Vue.set(userProfile , age, "24")
+				//this.set(this.userProfile, age, "24");
+			}
+		</script>
+	</body>
+</html>

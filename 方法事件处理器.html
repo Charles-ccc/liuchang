@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+		  <button v-on:click="greet">Greet</button>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			var vm = new Vue({
+				el : "#demo",
+				data : {
+					name : "LIUCHANG"
+				},
+				methods : {
+					greet : function(event){
+						alert("hello,my" + this.name);
+						if(event){
+							alert(event.target.tagName);
+						}
+					}
+				}
+			})
+			//也可以直接调用
+			//demo.greet();
+		</script>
+	</body>
+</html>

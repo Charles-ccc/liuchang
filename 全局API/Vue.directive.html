@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="dir">
+        <div v-ddir="color">{{num}}</div>
+        <p><button @click="add">ADD</button></p>
+    </div>
+    <p><button onclick="unbind()">解绑</button></p>
+    <script>
+        function unbind(){
+            dir.$destroy();
+        };
+
+        Vue.directive("ddir",/* function(el,binding){
+            el.style="color:"+binding.value;
+        } */{
+            //生命周期钩子函数
+            bind: function (el,binding) {
+                el.style="color:"+binding.value;
+            },//被绑定
+            inserted: function () {},//绑定到节点
+            update: function () {},//组件更新
+            componentUpdated: function () {},//组件更新完成
+            unbind: function () {}//解绑
+        });
+        var dir = new Vue({
+            el:"#dir",
+            data:{
+                num:10,
+                color:'red'
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

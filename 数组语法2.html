@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{font-size: 26px;}
+			.red{color: red;}
+			.blue{color: blue;}
+		</style>
+	</head>
+	<body>
+		<!--三元运算符式的渲染-->
+		<div id="div" v-bind:class="[classHead , classStyle ? classRed : classBlue]">{{ innerHtml }}</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var dataList = {
+				innerHtml : '欢迎来到我的Vue',
+				classHead : 'head',
+				classRed : 'red',
+				classBlue : 'blue',
+				classStyle : true
+			};
+			new Vue({
+				el : "#div",
+				data : dataList
+			});
+			setTimeout(function(){
+				dataList.classStyle = false;
+			},3000);
+		}
+	</script>
+</html>

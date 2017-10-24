@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		#div{font-size: 26px;}
+		.red{color: red;}
+		.blue{color: blue;}
+	</style>
+	</head>
+	<body>
+		<!-- 
+			v-if 中，当display=none时，html的标签代码都会消失，
+			v-show 中，当display=none时，html的标签代码不会消失，只是隐藏内容
+		-->
+		<section>
+			<div id="div" v-if="display"  class="red">{{ innerHtml }}</div>
+		</section>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var dataList = {
+				innerHtml : '欢迎来到我的Vue',
+				display : true
+			};
+			new Vue({
+				el : "section",
+				data : dataList
+			});
+			setTimeout(function(){
+				dataList.display = false;
+			},3000);
+		}
+	</script>
+</html>

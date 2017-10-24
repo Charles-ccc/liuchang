@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="head">
+			<p v-for="text in innerText">{{ text }}</p>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				var dataList = {
+					innerText : [ '你就不要想起我' , '还请你别忘记我' ]
+				};
+				new Vue({
+					el : ".head",
+					data : dataList
+				})
+			}
+		</script>
+	</body>
+</html>

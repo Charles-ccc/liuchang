@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			<button v-on:click=" counter += 1">加1</button>
+			<p>这个按钮被点击了{{counter}}次</p>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			var vm = new Vue({
+				el:"#demo",
+				data:{counter:0}
+			})
+		</script>
+	</body>
+</html>

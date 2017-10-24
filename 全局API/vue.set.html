@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="sett">
+        {{count}}
+    </div>
+    <p><button onclick="add()"></button></p>
+    <script>
+        function add(){
+            //Vue.set(outData,'count',2);
+            //aett.count++;
+            //outData.count++;
+            //sett.arr[1]='add';
+            Vue.set(sett.arr,1,'dd');
+        }
+        var outData={
+            count:1,
+            //goods:'cars'
+            arr:['aaa','bbb','ccc']
+        }
+        var sett = new Vue({
+            el:"#sett",
+            data:outData
+        })
+    </script>
+</body>
+</html>

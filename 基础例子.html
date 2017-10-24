@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			a = {{a}}, b = {{b}}
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		window.onload = function(){
+			var vm = new Vue({
+				el : "#demo",
+				data : { a:1 },
+				computed : { b : function (){ return this.a +1 } }
+			});
+			setTimeout (function(){
+				vm.a = 4;
+			},2000);
+		}
+	</script>
+</html>

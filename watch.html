@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>今日温度：{{wendu}}°</p>
+        <p>穿衣建议：{{chuanyi}}</p>
+        <p>
+            <button @click="up">升高温度</button>
+            <button @click="down">降低温度</button>
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        var chuanyiArr = ["衬衫长裤","夹克长裙","棉衣羽绒服"]
+        var app = new Vue({
+            el:"#app",
+            data:{
+                wendu:15,
+                chuanyi:'夹克长裙'
+            },
+            methods:{
+                up:function(){
+                    this.wendu+=3;
+                },
+                down:function(){
+                    this.wendu-=3;
+                }
+            },
+            watch:{
+                wendu:function(newVal,oldVal){
+                    if(newVal>=22){
+                        this.chuanyi=chuanyiArr[0];
+                    }else if(newVal<22 && newVal>0){
+                        this.chuanyi=chuanyiArr[1];
+                    }else{
+                        this.chuanyi=chuanyiArr[2];
+                    }
+                }
+            }
+        })
+            //两种不同的方法
+            /* app.$watch('wendu',function(newVal,oldVal){
+                if(newVal>=22){
+                    this.chuanyi=chuanyiArr[0];
+                }else if(newVal<22 && newVal>0){
+                    this.chuanyi=chuanyiArr[1];
+                }else{
+                    this.chuanyi=chuanyiArr[2];
+                }
+            }) */
+    </script>
+</body>
+</html>

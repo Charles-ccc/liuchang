@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{font-size: 26px;}
+			.red{color: red;}
+			.blue{color: blue;}
+		</style>
+	</head>
+	<body>
+		<div id="div" v-bind:class="{ 'red':isRed , 'blue':isBlue}" v-bind:style="[objectA , objectB]">{{ innerHtml}}</div>
+		
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				var dataList = {
+					innerHtml : "这到底是怎样的世界",
+					isRed : false,
+					isBlue : true,
+					objectA : {
+						fontSize : '30px',
+						fontStyle : 'italic',
+						width : '300px',
+						height: '100px',
+						transform : 'rotate(45deg)',
+						marginTop : '200px'
+					},
+					objectB : {
+						textDecoration : 'underline',
+						color : 'orangered',
+						background : 'pink'
+					}
+				};
+				new Vue({
+					el : '#div',
+					data : dataList
+				});
+				setTimeout(function(){
+					dataList.isRed = true;
+					dataList.isBlue = false;
+				},3000);
+			}
+		</script>
+	</body>
+</html>
